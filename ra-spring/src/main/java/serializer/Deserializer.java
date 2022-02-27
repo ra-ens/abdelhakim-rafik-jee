@@ -16,7 +16,7 @@ public class Deserializer implements IDeserializer<ContextConfig>{
      * @throws IOException in case of errors reading from the stream
      */
     @Override
-    public ContextConfig deserialize(InputStream inputStream) {
+    public ContextConfig deserialize(InputStream inputStream) throws IOException {
         Yaml yaml = new Yaml(new Constructor(ContextConfig.class));
         ContextConfig config = yaml.load(inputStream);
         return config;

@@ -7,13 +7,15 @@ public class Bean {
     private String id;
     private String className;
     private List<ConstructorArg> constructorArgs;
+    private List<Property> properties;
 
     public Bean() {}
 
-    public Bean(String id, String className, List<ConstructorArg> constructorArgs) {
+    public Bean(String id, String className, List<ConstructorArg> constructorArgs, List<Property> properties) {
         this.id = id;
         this.className = className;
         this.constructorArgs = constructorArgs;
+        this.properties = properties;
     }
 
     public String getId() {
@@ -38,5 +40,13 @@ public class Bean {
 
     public void setConstructorArgs(List<ConstructorArg> constructorArgs) {
         this.constructorArgs = constructorArgs;
+    }
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
     }
 }

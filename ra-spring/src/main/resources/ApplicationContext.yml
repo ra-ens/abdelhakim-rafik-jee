@@ -1,7 +1,8 @@
 beans:
   - id: dao
-    className: dao.DaoImp
+    className: test.dao.DaoImp
   - id: metier
-    className: metier.MetierImp
-    constructorArgs:
-      - ref: dao
+    className: test.metier.MetierImp
+    properties:
+      - name: dao
+        ref: dao
