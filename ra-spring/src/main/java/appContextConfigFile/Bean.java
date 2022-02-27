@@ -1,16 +1,16 @@
 package appContextConfigFile;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Bean {
 
     private String id;
     private String className;
-    private ArrayList<ConstructorArg> constructorArgs;
+    private List<ConstructorArg> constructorArgs;
 
     public Bean() {}
 
-    public Bean(String id, String className, ArrayList<ConstructorArg> constructorArgs) {
+    public Bean(String id, String className, List<ConstructorArg> constructorArgs) {
         this.id = id;
         this.className = className;
         this.constructorArgs = constructorArgs;
@@ -32,11 +32,11 @@ public class Bean {
         this.className = className;
     }
 
-    public ArrayList<ConstructorArg> getConstructorArgs() {
+    public List<ConstructorArg> getConstructorArgs() {
         return constructorArgs;
     }
 
-    public void setConstructorArgs(ArrayList<ConstructorArg> constructorArgs) {
+    public void setConstructorArgs(List<ConstructorArg> constructorArgs) {
         this.constructorArgs = constructorArgs;
     }
 }

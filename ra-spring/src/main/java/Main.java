@@ -8,18 +8,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
         Deserializer deserializer = new Deserializer();
         try {
-            System.out.println(">>>" + Main.class.getResource("ApplicationContext.yml").toString());
-            FileInputStream file = new FileInputStream(new File(Main.class.getResource("ApplicationContext.yml").getPath()));
-            Yaml yaml = new Yaml(new Constructor(Bean.class));
-            Bean config = yaml.load(file);
-            System.out.println(config);
+            ContextConfig config = deserializer.deserialize(new FileInputStream(new File(Main.class.getResource("ApplicationContext.yml").getPath())));
+            System.out.println(config.getBeans().get(0).getClassName());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

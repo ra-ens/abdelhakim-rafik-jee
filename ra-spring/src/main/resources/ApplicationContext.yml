@@ -1,7 +1,7 @@
-bean:
+beans:
   - id: dao
-    class: dao.DaoImp
+    className: dao.DaoImp
   - id: metier
-    class: metier.MetierImp
-    constructor_args:
+    className: metier.MetierImp
+    constructorArgs:
       - ref: dao
