@@ -1,0 +1,7 @@
+beans:
+  - id: dao
+    className: ext.DaoImpVW
+  - id: metier
+    className: metier.MetierImp
+    constructorArgs:
+      - ref: dao

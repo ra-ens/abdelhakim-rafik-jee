@@ -1,6 +1,6 @@
-package test.ext;
+package ext;
 
-import test.dao.IDao;
+import dao.IDao;
 
 public class DaoImpVW implements IDao {
     @Override

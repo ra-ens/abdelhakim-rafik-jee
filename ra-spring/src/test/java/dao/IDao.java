@@ -1,4 +1,4 @@
-package test.dao;
+package dao;
 
 public interface IDao {
 

@@ -1,4 +1,4 @@
-package test.metier;
+package metier;
 
 public interface IMetier {
     double calc();

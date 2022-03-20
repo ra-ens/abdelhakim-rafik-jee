@@ -1,8 +1,0 @@
-beans:
-  - id: dao
-    className: test.dao.DaoImp
-  - id: metier
-    className: test.metier.MetierImp
-    properties:
-      - name: dao
-        ref: dao

@@ -1,7 +1,9 @@
-package test.metier;
+package metier;
 
-import test.dao.IDao;
+import annotations.Component;
+import dao.IDao;
 
+@Component("metier")
 public class MetierImp implements IMetier{
 
     private IDao dao;
