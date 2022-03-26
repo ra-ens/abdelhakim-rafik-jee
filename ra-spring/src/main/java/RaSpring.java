@@ -3,6 +3,7 @@ import appContextConfigFile.Bean;
 import appContextConfigFile.ConstructorArg;
 import appContextConfigFile.ContextConfig;
 import appContextConfigFile.Property;
+import eu.infomas.annotation.AnnotationDetector;
 import org.reflections.Reflections;
 import serializer.Deserializer;
 
@@ -11,6 +12,7 @@ import java.beans.PropertyDescriptor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -28,12 +30,14 @@ public class RaSpring {
      * @param args
      */
     public RaSpring(String ...args) {
+        // all classes
+        // Set<Class<?>> classes;
 
-        for (String arg : args) {
+        /* for (String arg : args) {
             Reflections reflections = new Reflections(arg);
             Set<Class<?>> classes = reflections.getTypesAnnotatedWith(Component.class);
-            System.out.println(arg + " >> " + classes.size());
-        }
+            System.out.println(arg + " >> " + classes);
+        } */
     }
 
     /**
