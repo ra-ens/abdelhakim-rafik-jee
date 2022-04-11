@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout.html}">
+<head>
+    <link rel="stylesheet" href="/form-style.css">
+</head>
+<body>
+<div class="container mt-5 mb-5 d-flex justify-content-center" layout:fragment="content">
+    <div class="card px-1 py-4">
+        <div class="card-body">
+            <h4 class="fw-bold mb-5">Signup</h4>
+            <form method="post" th:action="@{/user/save}" th:object="${user}">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-2">
+                            <label class="fw-bold">Username :</label>
+                            <input class="form-control" type="text" placeholder="Username" th:field="*{username}">
+                            <small class="form-text text-danger" th:errors="*{username}"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-2">
+                            <label class="fw-bold">Email :</label>
+                            <input class="form-control" type="email" placeholder="Email" th:field="*{email}">
+                            <small class="form-text text-danger" th:errors="*{email}"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-2">
+                            <label class="fw-bold">Password :</label>
+                            <input class="form-control" type="password" placeholder="Password" th:field="*{password}">
+                            <small class="form-text text-danger" th:errors="*{password}"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-2">
+                            <label class="fw-bold">Confirm Password :</label>
+                            <input class="form-control" type="password" name="confirmPassword" placeholder="Confrim Password">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-2">
+                            <label class="fw-bold">First name :</label>
+                            <input class="form-control" type="text" placeholder="First name" th:field="*{firstName}">
+                            <small class="form-text text-danger" th:errors="*{firstName}"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-2">
+                            <label class="fw-bold">Last name :</label>
+                            <input class="form-control" type="text" placeholder="Last name" th:field="*{lastName}">
+                            <small class="form-text text-danger" th:errors="*{lastName}"></small>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block confirm-button">Confirm</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

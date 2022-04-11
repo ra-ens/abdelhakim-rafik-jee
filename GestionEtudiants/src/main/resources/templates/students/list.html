@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{/layout.html}">
+<body>
+<div class="container mt-5 px-2" layout:fragment="content">
+    <div class="mb-2 d-flex justify-content-between align-items-center">
+        <div class="position-relative">
+            <span class="position-absolute search"><i class="fa fa-search"></i></span>
+            <form th:action="@{/user/student/list}">
+                <input class="form-control w-100 search-input" name="keyword" th:value="${keyword}" placeholder="Search by name...">
+            </form>
+        </div>
+        <div class="px-2" sec:authorize="hasAuthority('ADMIN')">
+            <a th:href="@{/admin/student/add}">Add new <i class="fa-solid fa-plus ms-1 text-success"></i></a>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-responsive table-borderless">
+            <thead>
+            <tr class="bg-light">
+                <th scope="col" width="5%"></th>
+                <th scope="col" width="5%">#</th>
+                <th scope="col" width="20%">Student</th>
+                <th scope="col" width="20%">Birthday</th>
+                <th scope="col" width="10%">Gender</th>
+                <th scope="col" class="text-end" width="20%" sec:authorize="hasAuthority('ADMIN')">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="st:${students}">
+                <td scope="row">
+                    <input class="form-check-input" type="checkbox">
+                </td>
+                <td th:text="${st.getId()}"></td>
+                <td class="td-name"><img src="https://i.imgur.com/VKOeFyS.png" width="25"><span th:text="${st.getFullName()}"></span></td>
+                <td th:text="${st.getBirthDay()}"></td>
+                <td class="text-uppercase" th:text="${st.getGender()}"></td>
+                <td class="text-end" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/admin/student/edit(id=${st.getId()})}">
+                        <i class="fa-solid fa-pen-to-square me-2"></i>
+                    </a>
+                    <a th:href="@{/admin/student/delete(id=${st.getId()})}">
+                        <i class="fa-solid fa-trash-can text-danger"></i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li th:class="${current == 0 ? 'page-item disabled' : 'page-item'}">
+                    <a class="page-link" th:href="@{/user/student/list(page=${current - 1}, size=${size}, keyword=${keyword})}">Previous</a>
+                </li>
+                <li th:each="page, status:${pages}" th:class="${status.index == current ? 'active page-item' : 'page-item'}">
+                    <a class="page-link" th:href="@{/user/student/list(page=${status.index}, size=${size}, keyword=${keyword})}" th:text="${status.count}"></a>
+                </li>
+                <li th:class="${current == total - 1 ? 'page-item disabled': 'page-item'}">
+                    <a class="page-link" th:href="@{/user/student/list(page=${current + 1}, size=${size}, keyword=${keyword})}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+</body>
+</html>

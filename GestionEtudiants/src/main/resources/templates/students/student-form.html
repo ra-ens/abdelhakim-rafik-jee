@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout.html}">
+<head>
+    <link rel="stylesheet" href="/form-style.css">
+</head>
+<body>
+<div class="container mt-5 mb-5 d-flex justify-content-center" layout:fragment="content">
+    <div class="card px-1 py-4">
+        <div class="card-body">
+            <h4 class="fw-bold mb-5" th:text="${title}"></h4>
+            <form method="post" th:action="@{/admin/student/save}" th:object="${student}">
+                <h6 class="card-title mb-3 fw-bolder">Student Gender</h6>
+                <input type="hidden" name="id" th:field="*{id}" />
+                <div class="d-flex flex-row">
+                    <label class="radio me-1">
+                        <input type="radio" name="genre" value="Male" th:field="*{gender}" />
+                        <span><i class="fa-solid fa-person"></i> Male </span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="genre" value="Female" th:field="*{gender}">
+                        <span><i class="fa-solid fa-person-dress"></i> Female </span>
+                    </label>
+                </div>
+                <h6 class="information mt-4 mb-3 fw-bold">Student Information</h6>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-2">
+                            <label class="fw-bold">First name :</label>
+                            <input class="form-control" type="text" placeholder="Name" th:field="*{firstName}">
+                            <small class="form-text text-danger" th:errors="*{firstName}"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-2">
+                            <label class="fw-bold">Last name :</label>
+                            <input class="form-control" type="text" placeholder="Name" th:field="*{lastName}">
+                            <small class="form-text text-danger" th:errors="*{lastName}"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-2">
+                            <label class="fw-bold">Email :</label>
+                            <input class="form-control" type="email" placeholder="Name" th:field="*{email}">
+                            <small class="form-text text-danger" th:errors="*{email}"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb-2">
+                            <label class="fw-bold">Birthday :</label>
+                            <input class="form-control" type="date" placeholder="birthday" th:field="*{birthDay}">
+                            <small class="form-text text-danger" th:errors="*{birthDay}"></small>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block confirm-button">Confirm</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

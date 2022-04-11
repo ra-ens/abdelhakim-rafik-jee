@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="~{layout.html}">
+<head>
+</head>
+<body>
+    <div class="container mt-5 px-2" layout:fragment="content">
+        <div class="mb-2 d-flex justify-content-between align-items-center">
+            <div class="position-relative">
+                <span class="position-absolute search"><i class="fa fa-search"></i></span>
+                <form th:action="@{/user/patient_list}">
+                    <input class="form-control w-100 search-input" name="keyword" th:value="${keyword}" placeholder="Search by name...">
+                </form>
+            </div>
+            <div class="px-2" sec:authorize="hasAuthority('ADMIN')">
+                <a th:href="@{/admin/add}">Add new <i class="fa-solid fa-plus ms-1 text-success"></i></a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-responsive table-borderless">
+                <thead>
+                <tr class="bg-light">
+                    <th scope="col" width="5%"></th>
+                    <th scope="col" width="5%">#</th>
+                    <th scope="col" width="20%">Patient</th>
+                    <th scope="col" width="20%">Birthday</th>
+                    <th scope="col" width="10%">Genre</th>
+                    <th scope="col" class="text-end" width="20%" sec:authorize="hasAuthority('ADMIN')">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p:${patients}">
+                    <td scope="row">
+                        <input class="form-check-input" type="checkbox">
+                    </td>
+                    <td th:text="${p.id}"></td>
+                    <td class="td-name"><img src="https://i.imgur.com/VKOeFyS.png" width="25"><span th:text="${p.name}"></span></td>
+                    <td th:text="${p.birthDay}"></td>
+                    <td class="text-uppercase" th:text="${p.genre}"></td>
+                    <td class="text-end" sec:authorize="hasRole('ADMIN')">
+                        <a th:href="@{/admin/edit(id=${p.id})}">
+                            <i class="fa-solid fa-pen-to-square me-2"></i>
+                        </a>
+                        <a th:href="@{/admin/delete(id=${p.id})}">
+                            <i class="fa-solid fa-trash-can text-danger"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li th:class="${current == 0 ? 'page-item disabled' : 'page-item'}">
+                        <a class="page-link" th:href="@{/user/patient_list(page=${current - 1}, size=${size}, keyword=${keyword})}">Previous</a>
+                    </li>
+                    <li th:each="page, status:${pages}" th:class="${status.index == current ? 'active page-item' : 'page-item'}">
+                        <a class="page-link" th:href="@{/user/patient_list(page=${status.index}, size=${size}, keyword=${keyword})}" th:text="${status.count}"></a>
+                    </li>
+                    <li th:class="${current == total - 1 ? 'page-item disabled': 'page-item'}">
+                        <a class="page-link" th:href="@{/user/patient_list(page=${current + 1}, size=${size}, keyword=${keyword})}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</body>
+</html>

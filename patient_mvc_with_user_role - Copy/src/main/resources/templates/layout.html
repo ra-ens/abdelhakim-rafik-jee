@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient MVC</title>
+
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/webjars/font-awesome/6.1.0/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+
+</head>
+<body>
+    <!-- Page navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light px-3" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">Patients Manager</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/user/patient_list}">List <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a class="nav-link" th:href="@{/admin/add}">Add New</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                <li class="nav-item me-3"><a class="text-decoration-none" href="#"><i class="fa-solid fa-user"></i> Sign Up</a></li>
+                <li class="nav-item"><a class="text-decoration-none" th:href="@{/login}"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a></li>
+            </ul>
+            <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                <b class="me-3" sec:authentication="name"></b>
+                <li class="nav-item"><a class="text-decoration-none" th:href="@{/logout}"><i class="fa-solid fa-arrow-right-to-bracket"></i> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Page content -->
+    <section layout:fragment="content"></section>
+
+    <!-- Page footer -->
+    <footer>
+        Footer
+    </footer>
+
+    <script type="javascript" src="webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
