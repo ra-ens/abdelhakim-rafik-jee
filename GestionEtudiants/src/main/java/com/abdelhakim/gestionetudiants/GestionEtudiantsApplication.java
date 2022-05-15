@@ -27,7 +27,7 @@ public class GestionEtudiantsApplication {
         return new BCryptPasswordEncoder();
     }
 
-    // @Bean
+//     @Bean
     CommandLineRunner start(
             StudentRepository studentRepository,
             SecurityServiceImp securityService
