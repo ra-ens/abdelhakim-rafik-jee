@@ -28,8 +28,8 @@ public class BankAccountRestController {
         return bankAccountService.getBankAccount(accountId);
     }
 
-    @GetMapping("/account/{id}/history")
-    public AccountHistoryDTO getHistory(
+    @GetMapping("/account/{id}/operations")
+    public AccountHistoryDTO getBankAccountOperations(
             @PathVariable(name = "id") String accountId,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "5") int size
