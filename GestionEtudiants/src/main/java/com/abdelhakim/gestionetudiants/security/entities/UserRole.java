@@ -25,6 +25,6 @@ public class UserRole {
     @Size(max = 250)
     private String description;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
     private List<AppUser> users = new ArrayList<>();
 }

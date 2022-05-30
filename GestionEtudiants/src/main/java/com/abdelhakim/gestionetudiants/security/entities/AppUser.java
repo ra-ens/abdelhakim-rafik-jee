@@ -34,6 +34,6 @@ public class AppUser {
 
     private boolean enabled;
 
-    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<UserRole> roles = new ArrayList<>();
 }

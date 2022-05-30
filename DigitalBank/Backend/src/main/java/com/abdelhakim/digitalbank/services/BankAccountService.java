@@ -10,6 +10,8 @@ import com.abdelhakim.digitalbank.exceptions.CustomerNotFoundException;
 import java.util.List;
 
 public interface BankAccountService {
+    List<CustomerDTO> searchCustomers(String keyword);
+
     CustomerDTO saveCustomer(CustomerDTO customerDTO);
 
     CustomerDTO updateCustomer(CustomerDTO customerDTO);

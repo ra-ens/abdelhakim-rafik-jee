@@ -3,15 +3,13 @@ package com.abdelhakim.digitalbank.entities;
 import com.abdelhakim.digitalbank.enums.AccountStatus;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data
+@DiscriminatorColumn(name = "type")
 public class BankAccount {
 
     @Id
