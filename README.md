@@ -1,4 +1,4 @@
-# Abdelhakim rafik JEE
+# Abdelhakim RAFIK JEE
 Ce répertoire contient tous les projets développés dans le cadre de développement JEE. Chaque projet contient une documentation détailler sous forme d’un fichier Markdown « README.md »  
 Ci-dessous est une liste complète de ces projets.
 
