@@ -61,7 +61,7 @@ export class AccountsComponent implements OnInit {
     if (operationType == 'DEBIT') {
       this.accountService.debit(accountId, amount, description).subscribe({
         next: data => {
-          alert('Success Credit');
+          alert('Credit avec succès');
           this.operationFromGroup.reset();
           this.handleSearchAccount();
         },
@@ -72,7 +72,7 @@ export class AccountsComponent implements OnInit {
     } else if (operationType == 'CREDIT') {
       this.accountService.credit(accountId, amount, description).subscribe({
         next: data => {
-          alert('Success Debit');
+          alert('Débit avec succès');
           this.operationFromGroup.reset();
           this.handleSearchAccount();
         },
@@ -85,7 +85,7 @@ export class AccountsComponent implements OnInit {
         .transfer(accountId, accountDestination, amount, description)
         .subscribe({
           next: data => {
-            alert('Success Transfer');
+            alert('Transfer avec succès');
             this.operationFromGroup.reset();
             this.handleSearchAccount();
           },

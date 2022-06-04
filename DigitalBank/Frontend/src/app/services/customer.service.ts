@@ -5,7 +5,7 @@ import { Customer } from '../model/customer.model';
 import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CustomerService {
   constructor(private http: HttpClient) {}
@@ -15,17 +15,20 @@ export class CustomerService {
       environment.backendHost + '/customers'
     );
   }
+
   public searchCustomers(keyword: string): Observable<Array<Customer>> {
     return this.http.get<Array<Customer>>(
       environment.backendHost + '/customers/search?keyword=' + keyword
     );
   }
+
   public saveCustomer(customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(
       environment.backendHost + '/customer',
       customer
     );
   }
+
   public deleteCustomer(id: number) {
     return this.http.delete(environment.backendHost + '/customer/' + id);
   }

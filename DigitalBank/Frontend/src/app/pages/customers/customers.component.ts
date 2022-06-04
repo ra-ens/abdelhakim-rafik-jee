@@ -39,7 +39,7 @@ export class CustomersComponent implements OnInit {
   }
 
   handleDeleteCustomer(c: Customer) {
-    let conf = confirm('Are you sure?');
+    let conf = confirm('Êtes-vous sûr de vouloir supprimer ceci ?');
     if (!conf) return;
     this.customerService.deleteCustomer(c.id).subscribe({
       next: resp => {
@@ -58,7 +58,7 @@ export class CustomersComponent implements OnInit {
   }
 
   handleCustomerAccounts(customer: Customer) {
-    this.router.navigateByUrl('/customer-accounts/' + customer.id, {
+    this.router.navigateByUrl('/private/customer-accounts/' + customer.id, {
       state: customer
     });
   }
