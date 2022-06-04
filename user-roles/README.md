@@ -1,4 +1,4 @@
-# Mini Framework d'injection de dépendance similaire à Spring IOC
+# Gestion des rôles utilisateurs
 
 L’objectif de ce projet et d’implémenter une stratégie rôles-utilisateurs qui permet la gestion des utilisateurs selon leurs rôles.
 ## Conditions préalables
